@@ -1,0 +1,22 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "mediaId": "m278",
+      "mediaTitle": "Les Évadés",
+      "author": "Cinéphile",
+      "rating": 10,
+      "comment": "Un chef-d'œuvre absolu, la définition même du film d'évasion.",
+      "createdAt": "2025-01-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "mediaId": "s1399",
+      "mediaTitle": "Game of Thrones",
+      "author": "DragonFan",
+      "rating": 9,
+      "comment": "Les premières saisons sont monumentales. La fin... on ne va pas en parler.",
+      "createdAt": "2025-02-03T18:30:00.000Z"
+    }
+  ]
+}

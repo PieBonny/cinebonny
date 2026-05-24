@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   DESIGN SYSTEM — Cinéma sombre, accent rouge cinéma + or
+   Inspiré Netflix mais avec une identité propre.
+   Toutes les couleurs sont en HSL (obligatoire pour Tailwind).
+   ========================================================= */
+
+@layer base {
+  :root {
+    /* Fond très sombre, presque noir charbon */
+    --background: 0 0% 4%;
+    --foreground: 40 25% 97%;
+
+    /* Surfaces (cartes, modals…) */
+    --card: 0 0% 8%;
+    --card-foreground: 40 25% 97%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 40 25% 97%;
+
+    /* Couleur d'accent principale : rouge cinéma profond (signature) */
+    --primary: 358 75% 52%;
+    --primary-foreground: 40 25% 97%;
+    --primary-glow: 358 90% 62%;
+
+    /* Accent secondaire : or chaud (badges, notes) */
+    --gold: 42 95% 58%;
+    --gold-foreground: 0 0% 4%;
+
+    /* Surface secondaire (boutons subtils, badges) */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 25% 97%;
+
+    /* Texte atténué */
+    --muted: 0 0% 14%;
+    --muted-foreground: 40 8% 65%;
+
+    /* Accent (hover discret) */
+    --accent: 0 0% 16%;
+    --accent-foreground: 40 25% 97%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 40 25% 97%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 358 75% 52%;
+
+    --radius: 0.75rem;
+
+    /* Dégradés réutilisables */
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(0 0% 4% / 0) 0%,
+      hsl(0 0% 4% / 0.3) 30%,
+      hsl(0 0% 4% / 0.85) 75%,
+      hsl(0 0% 4%) 100%
+    );
+    --gradient-hero-side: linear-gradient(
+      90deg,
+      hsl(0 0% 4%) 0%,
+      hsl(0 0% 4% / 0.85) 30%,
+      hsl(0 0% 4% / 0.2) 70%,
+      hsl(0 0% 4% / 0) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 4% / 0) 40%,
+      hsl(0 0% 4% / 0.95) 100%
+    );
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(42 95% 58%) 0%,
+      hsl(38 100% 68%) 100%
+    );
+    --gradient-red: linear-gradient(
+      135deg,
+      hsl(358 75% 52%) 0%,
+      hsl(0 85% 62%) 100%
+    );
+    --gradient-radial-spot: radial-gradient(
+      circle at 20% 30%,
+      hsl(358 75% 52% / 0.18) 0%,
+      transparent 60%
+    );
+
+    /* Ombres */
+    --shadow-glow: 0 0 60px hsl(358 75% 52% / 0.45);
+    --shadow-gold: 0 0 40px hsl(42 95% 58% / 0.35);
+    --shadow-card: 0 20px 60px -15px hsl(0 0% 0% / 0.7);
+    --shadow-card-hover: 0 30px 80px -20px hsl(358 75% 52% / 0.5);
+
+    /* Transitions fluides */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 40 25% 97%;
+    --sidebar-primary: 358 75% 52%;
+    --sidebar-primary-foreground: 40 25% 97%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 40 25% 97%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 358 75% 52%;
+  }
+
+  .dark {
+    /* identique à :root — thème sombre par défaut */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: var(--gradient-radial-spot);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  /* Sélection */
+  ::selection {
+    background: hsl(var(--primary) / 0.4);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbar globale plus fine */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--secondary));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.6); }
+}
+
+@layer utilities {
+  /* Cache la scrollbar des rangées horizontales */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Texte doré (titre marque) */
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-red {
+    background: var(--gradient-red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Skeleton shimmer pour les états de chargement */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--accent)) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Effet "vignette" cinéma sur images */
+  .vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, hsl(0 0% 0% / 0.6) 100%);
+    pointer-events: none;
+  }
+
+  /* Carte hover avec lift */
+  .card-lift {
+    transition: var(--transition-bounce);
+  }
+  .card-lift:hover {
+    transform: translateY(-8px) scale(1.04);
+  }
+}
